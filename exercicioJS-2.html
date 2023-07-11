@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h5>Insira o valor em Celcius</h5> <input type="text" name="Celcius" id="celc">
+    <br>
+  
+      <h1 id="sum">Fahrenheit</h1> <h2 id="fah"></h2> <button onclick="converte()">Converter</button>   
+</body>
+<script>
+    function converte(){
+        let celcius = parseFloat(document.getElementById("celc").value);
+
+        let fahren = document.getElementById("fah");
+
+        fahren.innerText = (celcius * 9/5) + 32;
+    }
+</script>
+</html>

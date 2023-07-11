@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h5>Insira o primeiro valor aqui</h5> <input type="text" name="one" id="numberOne">
+    <br>
+    <h5>Insira o segundo valor aqui</h5>
+    <input type="text" name="two" id="numberTwo">
+    <br>
+    <h5>Insira o terceiro valor aqui</h5>
+    <input type="text" name="three" id="numberThree">
+    <br>
+      <h1 id="sum">Resultado</h1> <h2 id="resultado"></h2> <button onclick="calcula()">Calcular</button>
+      
+</body>
+<script>
+    
+    function calcula(){        
+        let n1 = parseFloat(document.getElementById("numberOne").value);
+        let n2 = parseFloat(document.getElementById("numberTwo").value);
+        let n3 = parseFloat(document.getElementById("numberThree").value); 
+
+        var calculo = document.getElementById("resultado");
+        calculo.innerText = (n1 + n2 + n3)/3;
+               
+    }
+
+</script>
+</html>
