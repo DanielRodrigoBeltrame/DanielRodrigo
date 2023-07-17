@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Extrair</h1>
+
+    <h3>Informe a palavra:</h3><input type="text" id="palavra">
+    <h3>Informe a quantidade de casa que desejas extrair da palavra</h3><input type="text" id="qtd">
+    <br>
+    <h2>Extração: </h2><h2 id="extact"></h2> <button onclick="extrair()">Extraindo</button>
+</body>
+<script>
+    function extrair(){
+        let palavra = document.getElementById("palavra").value;
+        let quantidade = parseInt(document.getElementById("qtd").value);
+        let extrair = document.getElementById("extact");
+
+        extrair.innerText = palavra.substr(0,quantidade);
+    }
+</script>
+</html>

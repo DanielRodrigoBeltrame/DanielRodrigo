@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>UperCase Strings</h1>
+
+    <h3>Informe uma palavra:</h3><input type="text" id="palavra">
+    <br>
+    <h2>Transformando: </h2><h2 id="result"></h2> <button onclick="upreCasse()">Transformar</button>
+</body>
+<script>
+    function upreCasse(){
+        let palavra = document.getElementById("palavra").value;
+        let transformar = document.getElementById("result");
+
+        transformar.innerText = palavra.toUpperCase();
+    }
+</script>
+</html>

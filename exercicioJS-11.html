@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Par ou Impar</h1>
+
+    <h3>Informe um número:</h3><input type="text" id="number">
+    <br>
+    <h2>Resultado: </h2><h2 id="result"></h2> <button onclick="alterar()">Resultado</button>
+</body>
+<script>
+    function alterar(){
+        let numero = parseFloat(document.getElementById("number").value);
+        let resultado = document.getElementById("result");
+
+        if(!isNaN(numero)){
+            if(numero % 2 === 0){
+                resultado.innerText = "PAR";
+            }else {
+                resultado.innerText = "IMPAR";
+            }
+        } else{
+            resultado.innerText = "Não é um número";
+        }
+
+        
+    }
+</script>
+</html>

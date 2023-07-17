@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Concatenar Strings</h1>
+
+    <h3>Informe seu nome:</h3><input type="text" id="nome">
+    <h3>Informe seu sobrenome</h3><input type="text" id="sobNome">
+    <br>
+    <h2>Concantenado: </h2><h2 id="concati"></h2> <button onclick="concatenar()">Concatenar</button>
+</body>
+<script>
+    function concatenar(){
+        let nome = document.getElementById("nome").value;
+        let sobreNome = document.getElementById("sobNome").value;
+        let concatenado = document.getElementById("concati");
+
+        concatenado.innerText = nome+sobreNome;
+    }
+</script>
+</html>

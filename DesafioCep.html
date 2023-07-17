@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+   nav h1{
+        display: flex;
+        font-size: 55px;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        background-color: rgb(255, 255, 255);
+        
+    }
+
+    input{
+        width: 500px;
+        height: 50px;
+        border-radius: 40px;
+        padding-left: 25px;
+    }
+
+    .campos-cep{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+    }
+    .inser-dado-cep{
+
+        align-items: left;
+        color: black;
+        
+    }
+        
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;;
+        width: 100%;
+        padding-left: 25px;
+    }
+
+    .recebe-dados-cep{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+</style>
+<body>
+    <nav> <h1>Desafio CEP</h1></nav>
+
+    <section class="campos-cep">
+        <div class="inser-dado-cep">
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" placeholder="Digite seu cep" onblur="recuperaDadosCep()">
+        </div>
+        <div class="recebe-dados-cep">
+            <label for="rua">Rua:</label>
+            <input type="text" id="rua" placeholder="Rua" disabled>
+            <label for="complemento">Complemento:</label>
+            <input type="text" id="complemento" placeholder="Complemento" disabled>
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" placeholder="Bairro" disabled>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" placeholder="Cidade" disabled>
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" placeholder="Estado" disabled>
+        </div>
+    </section>
+</body>
+<script>
+    function recuperaDadosCep(){
+
+        let cep = document.getElementById("cep").value;
+        let rua = document.getElementById("rua");
+        let complemento = document.getElementById("complemento");
+        let bairro = document.getElementById("bairro");
+        let cidade = document.getElementById("cidade");
+        let estado = document.getElementById("estado");
+
+        fetch(`https://viacep.com.br/ws/${cep}/json/`).then(dado => dado.json()).then(dado => {
+            
+            rua.value = dado.logradouro;
+            complemento.value = dado.complemento;
+            bairro.value = dado.bairro;
+            cidade.value = dado.localidade;
+            estado.value = dado.uf;
+        })
+    }
+
+</script>
+</html>

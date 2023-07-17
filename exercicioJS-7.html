@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Quantidade de letras</h1>
+
+    <h3>Informe uma palavra:</h3><input type="text" id="palavra">
+    <br>
+    <h2>A palavra possuí: </h2><h2 id="count"></h2> <button onclick="count()">Contar</button>
+</body>
+<script>
+    function count(){
+        let palavra = document.getElementById("palavra").value;
+        let conta = document.getElementById("count");
+        conta.innerText = palavra.length;
+    }
+</script>
+</html>

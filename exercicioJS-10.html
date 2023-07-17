@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Alterar</h1>
+
+    <h3>Informe a palavra:</h3><input type="text" id="palavra">
+    <br>
+    <h2>Alteração: </h2><h2 id="alter"></h2> <button onclick="alterar()">Extraindo</button>
+</body>
+<script>
+    function alterar(){
+        let palavra = document.getElementById("palavra").value;
+        let extrair = document.getElementById("alter");
+
+        palavra = palavra.replaceAll("A", "4");
+        palavra = palavra.replaceAll("I", "1");
+        palavra = palavra.replaceAll("E", "3");
+        palavra = palavra.replaceAll("O", "0");
+        palavra = palavra.replaceAll("S", "5");
+
+        extrair.innerText = palavra;
+    }
+</script>
+</html>

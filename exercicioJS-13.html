@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>10% de desconto</h1>
+
+    <h3>Informe um número:</h3><input type="text" id="number">
+    <br>
+    <h2>Desconto: </h2><h2 id="result"></h2> <button onclick="calcular()">Resultado</button>
+</body>
+<script>
+    function calcular(){
+        let numero = parseFloat(document.getElementById("number").value);
+        let resultado = document.getElementById("result");
+
+        resultado.innerText = numero * 0.9;
+    }
+</script>
+</html>

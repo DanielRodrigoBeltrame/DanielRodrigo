@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+   nav h1{
+        display: flex;
+        font-size: 55px;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        background-color: rgb(255, 255, 255);
+        
+    }
+
+    input{
+        width: 500px;
+        height: 50px;
+        border-radius: 40px;
+        padding-left: 25px;
+        color: black;
+    }
+
+    select{
+        width: 500px;
+        height: 50px;
+        border-radius: 40px;
+        padding-left: 25px;        
+    }
+    .paises{
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+    }
+    .campos-pais{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 35px;
+    }
+    .campo-imagem{
+        display: flex;
+        flex-direction: column;
+        align-items: right;
+        gap: 35px;  
+    }
+    .inser-dado-pais{
+
+        align-items: left;
+        color: black;
+        
+    }
+        
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;;
+        width: 100%;
+        padding-left: 25px;
+    }
+
+    .recebe-dados-pais{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+</style>
+<body>
+    <nav> <h1>Desafio Países</h1></nav>
+
+    <div class="paises">
+
+        <section class="campos-pais">
+            <div class="inser-dado-pais">
+                <label for="paises">Paises:</label>
+                <select id="paises"></select>
+            </div>
+            <div class="recebe-dados-pais">
+                <label for="rua">Capital:</label>
+                <input type="text" id="capital" placeholder="Capital" disabled>
+                <label for="complemento">Lingua:</label>
+                <input type="text" id="lingua" placeholder="Lingua" disabled>
+                <label for="bairro">População:</label>
+                <input type="text" id="populacao" placeholder="População" disabled>
+                <label for="cidade">Região:</label>
+                <input type="text" id="regiao" placeholder="Região" disabled>
+                <label for="estado">Área:</label>
+                <input type="text" id="area" placeholder="Área" disabled>
+            </div>
+     
+        </section>
+        <section class="campo-imagem">
+            <div class="imagem">
+                <h2>Bandeira:</h2>
+                <img id="bandeira" />
+            </div>
+        </section>
+    </div>
+</body>
+<script>
+    let paises = document.getElementById("paises");
+
+    document.body.onload = () => {
+        fetch(`https://restcountries.com/v3.1/all`)
+            .then((arquivo) => arquivo.json())
+            .then((dado) => {
+                const paisesOrdenados = dado.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
+                paisesOrdenados.forEach((pais) => {
+                    let selecao = document.createElement('option')
+                    selecao.value = pais.name.common;
+                    selecao.innerText = pais.name.common;
+
+                    paises.appendChild(selecao);
+
+                });
+            });
+    };  
+
+   paises.addEventListener("change", (event)=> {
+         event.preventDefault();
+
+        let paisNome = paises.value;
+
+        fetch(`https://restcountries.com/v3.1/name/${paisNome}`)
+        .then(dado => dado.json())
+        .then(dado => {
+
+            let pais = dado[0];
+
+            let paisCapital = document.getElementById("capital");
+            let paisLingua = document.getElementById("lingua");
+            let paisPopulacao = document.getElementById("populacao");
+            let paisRegiao = document.getElementById("regiao");
+            let paisArea = document.getElementById("area");
+            let paisBandeira = document.getElementById("bandeira");
+
+            paisCapital.value = pais.capital;
+            paisLingua.value = Object.values(pais.languages).join(', ');
+            paisPopulacao.value = pais.population;
+            paisRegiao.value = pais.region;
+            paisArea.value = pais.area;
+            paisBandeira.src = pais.flags.png;
+        } )
+   } )
+
+</script>
+</html>
